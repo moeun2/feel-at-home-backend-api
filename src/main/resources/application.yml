@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ssafyweb?useUniCode=yes&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    password: ssafy
+    username: ssafy
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#mapper location settings
+mybatis:
+  type-aliases-package: com.athome.feel.model
+  mapper-locations: mappers/**/*.xml
