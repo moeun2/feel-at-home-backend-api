@@ -30,8 +30,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Practice Swagger")
-                .description("practice swagger config")
+                .title("Feel At Home")
+                .description("Recommend Music By Your Feeling!")
                 .version("1.0")
                 .build();
     }
