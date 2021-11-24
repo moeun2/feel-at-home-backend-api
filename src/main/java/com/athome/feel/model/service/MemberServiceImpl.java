@@ -40,4 +40,9 @@ public class MemberServiceImpl implements MemberService {
     public void deleteFriend(FriendDto friendDto) {
         sqlSession.getMapper(MemberMapper.class).deleteFriend(friendDto);
     }
+
+    @Override
+    public List<MemberDto> searchName(String name) {
+        return sqlSession.getMapper(MemberMapper.class).findByNameLike(name);
+    }
 }

@@ -18,4 +18,6 @@ public interface MemberService {
     void addFriend(FriendDto friendDto);
 
     void deleteFriend(FriendDto friendDto);
+
+    List<MemberDto> searchName(String name);
 }

@@ -1,5 +1,6 @@
 package com.athome.feel.controller;
 
+import com.athome.feel.model.FriendDto;
 import com.athome.feel.model.LoginDto;
 import com.athome.feel.model.MemberDto;
 import com.athome.feel.model.service.MemberService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/user")
 public class MemberController {
 
     @Autowired
@@ -31,9 +33,16 @@ public class MemberController {
         return ResponseEntity.ok(friends);
     }
 
-    @PostMapping("/friend/{memberId}")
-    public ResponseEntity<?> addFriend(@PathVariable("memberId") int memberId) {
+    @PostMapping("/friend")
+    public ResponseEntity<?> addFriend(@RequestBody FriendDto friendDto) {
+        memberService.addFriend(friendDto);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<?> searchName(@RequestParam("name") String name) {
+        List<MemberDto> memberDtos = memberService.searchName(name);
+        return ResponseEntity.ok(memberDtos);
     }
 
 }
