@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.athome.feel.model.mapper.MemberMapper">
+
+    <insert id="insertMember" parameterType="loginDto">
+        insert into member (member_account_id, display_name, email)
+        values (#{id}, #{displayName}, #{email})
+    </insert>
+
+    <select id="findByAccountId" parameterType="string" resultType="memberDto">
+        select member_id, member_account_id, display_name, email
+        from member
+        where member_account_id = #{accountId}
+    </select>
+
+    <select id="findFriend" parameterType="int" resultType="memberDto">
+        select member.member_id, member_account_id, display_name, email
+        from member
+        where member.member_id in (
+            select friend_id
+            from friend
+            where member_id = #{memberId});
+    </select>
+
+    <insert id="addFriend" parameterType="map">
+        insert into friend (member_id, friend_id)
+        values (#{memberId}, #{friendId})
+    </insert>
+
+    <delete id="deleteFriend" parameterType="map">
+        delete from friend
+        where member_id = #{memberId}
+        and friend_id = #{friendId}
+    </delete>
+
+</mapper>
