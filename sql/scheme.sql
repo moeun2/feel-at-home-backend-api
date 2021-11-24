@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `feel_at_home`.`playlist`
 -- -----------------------------------------------------
 -- Table `feel_at_home`.`friend`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `feel_at_home`.`friend`
+CREATE TABLE IF NOT EXISTS `feel_at_home`.`follow`
 (
     `member_id` BIGINT(20) NOT NULL,
     `friend_id` BIGINT(20) NOT NULL

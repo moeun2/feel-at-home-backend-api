@@ -15,6 +15,12 @@
         where member_account_id = #{accountId}
     </select>
 
+    <select id="findByNameLike" parameterType="string" resultType="memberDto">
+        select member_id, member_account_id, display_name, email
+        from member
+        where display_name like CONCAT('%',#{keyword},'%')
+    </select>
+
     <select id="findFriend" parameterType="int" resultType="memberDto">
         select member.member_id, member_account_id, display_name, email
         from member

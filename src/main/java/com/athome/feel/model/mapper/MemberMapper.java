@@ -19,4 +19,6 @@ public interface MemberMapper {
     void addFriend(FriendDto friendDto);
 
     void deleteFriend(FriendDto friendDto);
+
+    List<MemberDto> findByNameLike(String name);
 }
