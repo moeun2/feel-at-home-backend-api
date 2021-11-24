@@ -67,11 +67,10 @@ CREATE TABLE IF NOT EXISTS `feel_at_home`.`follow`
 CREATE TABLE IF NOT EXISTS `feel_at_home`.`song`
 (
     `song_id` BIGINT(20)  NOT NULL AUTO_INCREMENT,
-    `title`   VARCHAR(50) NOT NULL,
-    `album`   VARCHAR(50) NOT NULL,
-    `artist`  VARCHAR(50) NOT NULL,
-    `status1` VARCHAR(45) NULL,
-    `status2` VARCHAR(45) NULL,
+    `youtube_id` VARCHAR(30) NOT NULL,
+    `title`   VARCHAR(100) NOT NULL,
+    `description`   VARCHAR(50) NOT NULL,
+    `thumbnail` VARCHAR(100) NOT NULL,
     PRIMARY KEY (`song_id`)
 )
     ENGINE = InnoDB;
