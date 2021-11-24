@@ -29,9 +29,9 @@ CREATE TABLE IF NOT EXISTS `feel_at_home`.`member`
 (
     `member_id`         BIGINT(20)  NOT NULL AUTO_INCREMENT,
     `member_account_id` VARCHAR(45) NOT NULL,
-    `userPW`            VARCHAR(45) NOT NULL,
-    `userName`          VARCHAR(45) NOT NULL,
+    `display_name`          VARCHAR(45) NOT NULL,
     `email`             VARCHAR(45) NOT NULL,
+    `friend`            INT DEFAULT 0,
     PRIMARY KEY (`member_id`)
 )
     ENGINE = InnoDB;
