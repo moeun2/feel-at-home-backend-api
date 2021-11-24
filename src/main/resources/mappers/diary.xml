@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.athome.feel.model.mapper.DiaryMapper">
+
+	<!-- member_id에 해당하는 sentimentCnt조회 -->
+	<select id="listSentiment" parameterType="map" resultType="sentimentDto">
+		select sentimentName, count(sentimentName) as sentimentCnt
+		from diary
+		where member_id = #{member_id}
+		group by sentimentName;
+	</select>
+	
+	<!-- member_id에 해당하는 글 조회 -->
+	<select id="list" parameterType="map" resultType="diaryDto">
+		select
+		diary_id, member_id, year, month, day ,memo,sentimentColor,sentimentName
+		from diary
+		where member_id = #{member_id}
+	</select>
+
+	<!-- 글 등록 -->
+	<insert id="create" parameterType="diaryDto">
+		insert into diary(
+
+		member_id,
+		year, month, day,memo,sentimentColor,sentimentName
+		) values (
+
+		#{member_id}, #{year},
+		#{month},#{day},#{memo},#{sentimentColor},#{sentimentName}
+		)
+	</insert>
+
+	<!-- 댓글 수정 -->
+	<!-- <update id="modify" parameterType="commentDto"> <![CDATA[ update comments 
+		set comment = #{comment} where comment_no = #{comment_no} ]]> </update> -->
+
+	<!-- comment_no에 따른 댓글 삭제 <delete id="delete" parameterType="int"> delete 
+		from comments where comment_no = #{comment_no} </delete> -->
+
+</mapper>
+
